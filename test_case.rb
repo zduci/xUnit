@@ -11,8 +11,16 @@ class TestCase
   end
 
   def run 
+    result = TestResult.new
+    result.test_started
     self.set_up
-    self.send(@method_name) 
-    self.tear_down
+    begin
+      self.send(@method_name) 
+    rescue 
+      result.test_failed
+    ensure
+      self.tear_down
+    end
+    result
   end
 end
