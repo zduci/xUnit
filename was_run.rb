@@ -1,10 +1,11 @@
 require './test_case'
 class WasRun < TestCase 
-  attr_accessor :was_run
-  def initialize(method_name)
+  attr_accessor :was_run, :was_set_up
+  def set_up
     @was_run = nil 
-    super method_name
+    @was_set_up = 1
   end
+
   def test_method
     @was_run = 1
   end
