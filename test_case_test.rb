@@ -1,17 +1,10 @@
 require './was_run'
 class TestCaseTest < TestCase
-  def set_up
+  def test_template
     @test = WasRun.new :test_method
-  end
-  def test_running
     @test.run
-    raise unless @test.was_run
-  end
-  def test_set_up
-    @test.run
-    raise unless @test.was_set_up
+    raise unless @test.log == 'set_up was_run tear_down '
   end
 end
 
-TestCaseTest.new(:test_running).run
-TestCaseTest.new(:test_set_up).run
+TestCaseTest.new(:test_template).run

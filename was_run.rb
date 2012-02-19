@@ -1,12 +1,15 @@
 require './test_case'
 class WasRun < TestCase 
-  attr_accessor :was_run, :was_set_up
+  attr_accessor :log
   def set_up
-    @was_run = nil 
-    @was_set_up = 1
+    @log = 'set_up ' 
   end
 
   def test_method
-    @was_run = 1
+    @log = @log + "was_run "
+  end
+
+  def tear_down
+    @log = @log + 'tear_down '
   end
 end

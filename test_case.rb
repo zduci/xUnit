@@ -6,9 +6,13 @@ class TestCase
 
   def set_up
   end
+  
+  def tear_down
+  end
 
   def run 
     self.set_up
     self.send(@method_name) 
+    self.tear_down
   end
 end
