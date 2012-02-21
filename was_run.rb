@@ -1,6 +1,6 @@
 require './test_case'
 class WasRun < TestCase 
-  attr_accessor :log
+  attr_reader :log
   def set_up
     @log = 'set_up ' 
   end

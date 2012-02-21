@@ -1,5 +1,5 @@
 class TestCase
-  attr_accessor :was_set_up
+  attr_reader :was_set_up
   def initialize(method_name)
     @method_name = method_name
   end
@@ -10,17 +10,15 @@ class TestCase
   def tear_down
   end
 
-  def run 
-    result = TestResult.new
+  def run(result) 
     result.test_started
     self.set_up
     begin
       self.send(@method_name) 
-    rescue 
+    rescue  
       result.test_failed
     ensure
       self.tear_down
     end
-    result
   end
 end
